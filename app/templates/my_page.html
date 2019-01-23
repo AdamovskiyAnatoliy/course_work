@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Мій профіль</h1>
+
+    <form action="/my_page" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="text-left">
+            {% if problem %}
+                <div class="alert alert-danger" role="alert">
+                    {{ problem }}
+                </div>
+            {% endif %}
+            <div class="form-group">
+                {{ form.first_name.label }}
+                {{ form.first_name(class="form-control", value=table.FIRSTNAME[0]) }}
+            </div>
+            <div class="form-group">
+                {{ form.last_name.label }}
+                {{ form.last_name(class="form-control", value=table.LASTNAME[0]) }}
+            </div>
+
+            <div class="form-group">
+                {{ form.birth_day.label }}
+                {{ form.birth_day(class="form-control",  value=table.BIRTHDAYUSER[0].strftime('%Y-%m-%d')) }}
+            </div>
+            <div class="form-group">
+                <div class="text-left">
+                    {{ form.sex.label }}
+                    {{ form.sex(value=str(table.SEXUSER[0])) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="text-left">
+                    {{ form.doctor.label }}
+                    {{ form.doctor(default=table.DOCTORUSER[0]) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="text-left">
+                    {{ form.subscript.label }}
+                    {{ form.subscript(value=table.SUBMITEDUSER[0])}}
+                </div>
+            </div>
+
+            {% if form.first_name.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {% for error in form.first_name.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if form.last_name.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {% for error in form.last_name.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if form.birth_day.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {% for error in form.birth_day.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if form.sex.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {% for error in form.sex.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {{ form.submit(class_="btn btn-lg btn-primary btn-block") }}
+            <br>
+        </div>
+    </form>
+
+{% endblock %}

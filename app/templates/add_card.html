@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+    <form action='/add_card' method="POST">
+        {{ form.hidden_tag() }}
+         <h1>Додати Карту</h1>
+        {% if problem %}
+            <div class="alert alert-danger" role="alert">
+                {{ problem }}
+            </div>
+        {% endif %}
+        <div class="form-group">
+           {{ form.number(class="form-control") }}
+        </div>
+        {{ form.submit(class_="btn btn-lg btn-primary btn-block") }}
+        <br>
+        {% for error in form.number.errors %}
+            {{ error }}
+        {% endfor %}
+    </form>
+{% endblock %}
+
+

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1> Стистика </h1>
+
+
+    {% for id, text in zip(ids, ['хвороб', 'ліків', 'симптомів']) %}
+        <h3>Гістограма кількості букв в назві {{ text }}</h3>
+        <div id="{{id}}"></div>
+    {% endfor %}
+
+
+{% endblock %}

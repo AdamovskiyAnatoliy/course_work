@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Рекомендовані ліки</h1>
+    {% for med_name in med_res.medication.value_counts().index %}
+        <p>{{ med_name }}-{{ list(med_res[med_res.medication==med_name].symptom) }}</p>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Індивідуальний план лікування</h1>
+    {% for med_name in medication %}
+        <p>{{ med_name }}</p>
+    {% endfor %}
+{% endblock %}

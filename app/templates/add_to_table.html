@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+    <form action={{ '/table/add/'+table_name }} method="POST">
+        {{ form.hidden_tag() }}
+         <h1>Додати в таблицю {{ table_nameuk }}</h1>
+        {% if problem %}
+            <div class="alert alert-danger" role="alert">
+                {{ problem }}
+            </div>
+        {% endif %}
+        <div class="form-group">
+            {{ form.name(class="form-control", placeholder=form.name.label.text) }}
+        </div>
+        <div class="form-group">
+            {{ form.desc(class="form-control", placeholder=form.desc.label.text) }}
+        </div>
+        {{ form.submit(class_="btn btn-lg btn-primary btn-block") }}
+        <br>
+        {% for error in form.name.errors %}
+            {{ error }}
+        {% endfor %}
+        {% for error in form.desc.errors %}
+            {{ error }}
+        {% endfor %}
+    </form>
+
+
+
+{% endblock %}

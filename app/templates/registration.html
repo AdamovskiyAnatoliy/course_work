@@ -1,0 +1,106 @@
+{% extends "authorization_base.html" %}
+
+
+{% block content %}
+
+    <main role="main" class="container">
+        <br>
+        <div class="jumbotron">
+            <form action="/registration" method="POST">
+                {{ form.hidden_tag() }}
+                <h1 class="h3 mb-3 font-weight-normal">Реєстрація</h1>
+                <div class="text-left">
+                    {% if problem %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ problem }}
+                        </div>
+                    {% endif %}
+                    <div class="form-group">
+                        {{ form.login.label }}{{ form.login(class="form-control", placeholder=form.login.label.text) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.first_name.label }}{{ form.first_name(class="form-control", placeholder=form.first_name.label.text) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.last_name.label }}{{ form.last_name(class="form-control", placeholder=form.last_name.label.text) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.birth_day.label }}{{ form.birth_day(class="form-control", placeholder=form.birth_day.label.text) }}
+                    </div>
+                    <div class="form-group">
+                        <div class="text-left">
+                            {{ form.sex.label }}{{ form.sex }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="text-left">
+                            {{ form.doctor.label }}{{ form.doctor }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form.password.label }}{{ form.password(class="form-control", placeholder=form.password.label.text) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.password_repeat.label }}{{ form.password_repeat(class="form-control", placeholder=form.password_repeat.label.text) }}
+                    </div>
+
+                    {% if form.login.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {% for error in form.login.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if form.first_name.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {% for error in form.first_name.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if form.last_name.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {% for error in form.last_name.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if form.birth_day.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {% for error in form.birth_day.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if form.sex.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {% for error in form.sex.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if form.password.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {% for error in form.password.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if form.password_repeat.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {% for error in form.password_repeat.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {{ form.registration(class_="btn btn-lg btn-primary btn-block") }}
+                    <br>
+                </div>
+                <a href="/login">Увійти у систему</a>
+            </form>
+        </div>
+    </main>
+
+{% endblock %}
+

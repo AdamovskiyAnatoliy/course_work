@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Оберіть дію </h1>
+    {{ table|safe }}
+    <a class="btn btn-outline-success" href={{ '/mds_view/add/medicine_symptom' }}>Додати ліки від симптому</a>
+    <a class="btn btn-outline-success" href={{ '/mds_view/add/medicine_disease' }}>Додати ліки від хвороби</a>
+    <a class="btn btn-outline-success" href={{ '/mds_view/add/symptom_disease' }}>Додати симптоми хвороби</a>
+
+{% endblock %}

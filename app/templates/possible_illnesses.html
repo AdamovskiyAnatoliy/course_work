@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Можливі хвороби</h1>
+    {% for dis_name in dis_res.disease.value_counts().index %}
+        <p>{{ dis_name }} <a href={{ '/individual/'+dis_name }}>Індивідуальне лікування</a></p>
+    {% endfor %}
+    {% if form %}
+        <form action="/possible_illnesses" method="POST">
+            <div class="form-group">
+                <div class="text-left">
+                    {{ form.disease.label }}{{ form.disease }}
+                </div>
+            </div>
+            {{ form.submit(class_="btn btn-lg btn-primary btn-block") }}
+        </form>
+    {% endif %}
+
+
+
+
+{% endblock %}
